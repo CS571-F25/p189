@@ -3,7 +3,7 @@ import { IoStar, IoHeart } from 'react-icons/io5';
 import FoodCard from './FoodCard';
 import Navigation from './Navigation';
 
-export default function MyFavorites({ entries, onToggleFavorite }) {
+export default function MyFavorites({ entries, onToggleFavorite, onDeleteEntry }) {
     const favoriteEntries = entries.filter(entry => entry.isFavorite);
 
     return (
@@ -43,6 +43,7 @@ export default function MyFavorites({ entries, onToggleFavorite }) {
                                 <FoodCard
                                     entry={entry}
                                     onToggleFavorite={onToggleFavorite}
+                                    onDeleteEntry={onDeleteEntry}
                                 />
                             </Col>
                         ))

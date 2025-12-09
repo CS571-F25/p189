@@ -1,10 +1,10 @@
 import { Card, Button, Badge } from 'react-bootstrap';
-import { IoStar, IoStarOutline, IoChatbubble, IoHome, IoStorefront, IoLocation, IoRestaurant, IoLink, IoCalendar } from 'react-icons/io5';
+import { IoStar, IoStarOutline, IoChatbubble, IoHome, IoStorefront, IoLocation, IoRestaurant, IoLink, IoCalendar, IoTrash } from 'react-icons/io5';
 import RatingDisplay from './RatingDisplay';
 import ImageDisplay from './ImageDisplay';
 import RecipeDetails from './RecipeDetails';
 
-export default function FoodCard({ entry, onToggleFavorite }) {
+export default function FoodCard({ entry, onToggleFavorite, onDeleteEntry }) {
     // Pastel gradient backgrounds for cards
     const cardGradients = [
         'linear-gradient(135deg, #FFD6E8 0%, #FFE5D5 100%)',
@@ -33,15 +33,26 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                     <Card.Title as="h2" className="h5" style={{ color: '#C44569', fontWeight: '700' }}>
                         {entry.name}
                     </Card.Title>
-                    <Button
-                        variant={entry.isFavorite ? 'warning' : 'outline-warning'}
-                        size="sm"
-                        onClick={() => onToggleFavorite(entry.id)}
-                        aria-label={entry.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                        style={{ fontSize: '1.3rem' }}
-                    >
-                        {entry.isFavorite ? <IoStar /> : <IoStarOutline />}
-                    </Button>
+                    <div>
+                        <Button
+                            variant={entry.isFavorite ? 'warning' : 'outline-warning'}
+                            size="sm"
+                            onClick={() => onToggleFavorite(entry.id)}
+                            aria-label={entry.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                            style={{ fontSize: '1.3rem', marginRight: '0.5rem' }}
+                        >
+                            {entry.isFavorite ? <IoStar /> : <IoStarOutline />}
+                        </Button>
+                        <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => onDeleteEntry(entry.id)}
+                            aria-label="Delete entry"
+                            style={{ fontSize: '1.1rem' }}
+                        >
+                            <IoTrash />
+                        </Button>
+                    </div>
                 </div>
 
                 <RatingDisplay
@@ -79,6 +90,7 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                         <RecipeDetails
                             recipe={entry.recipe}
                             instructions={entry.instructions}
+                            recipeUrl={entry.recipeUrl}
                         />
                     </>
                 ) : (

@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 import SortButtons from './SortButtons';
 import FoodList from './FoodList';
 
-export default function Home({ entries, onAddEntry, onToggleFavorite }) {
+export default function Home({ entries, onAddEntry, onToggleFavorite, onDeleteEntry }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [sortBy, setSortBy] = useState('date');
     const [showForm, setShowForm] = useState(false);
@@ -98,6 +98,7 @@ export default function Home({ entries, onAddEntry, onToggleFavorite }) {
                 <FoodList
                     entries={sortedEntries}
                     onToggleFavorite={onToggleFavorite}
+                    onDeleteEntry={onDeleteEntry}
                 />
             </Container>
         </>

@@ -10,6 +10,7 @@ export default function FoodForm({ onAddEntry }) {
         isHomemade: true,
         recipe: '',
         instructions: '',
+        recipeUrl: '',
         location: '',
         madeBy: '',
         externalLink: '',
@@ -67,6 +68,7 @@ export default function FoodForm({ onAddEntry }) {
             isHomemade: true,
             recipe: '',
             instructions: '',
+            recipeUrl: '',
             location: '',
             madeBy: '',
             externalLink: '',
@@ -172,6 +174,21 @@ export default function FoodForm({ onAddEntry }) {
                                     value={formData.instructions}
                                     onChange={handleChange}
                                     placeholder="Enter cooking instructions"
+                                />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3">
+                                <Form.Label htmlFor="recipeUrl">
+                                    <IoLink style={{ marginRight: '6px' }} />
+                                    Recipe Source URL (Optional)
+                                </Form.Label>
+                                <Form.Control
+                                    id="recipeUrl"
+                                    type="url"
+                                    name="recipeUrl"
+                                    value={formData.recipeUrl}
+                                    onChange={handleChange}
+                                    placeholder="https://example.com/recipe"
                                 />
                             </Form.Group>
                         </>

@@ -1,7 +1,7 @@
 import { Row, Col } from 'react-bootstrap';
 import FoodCard from './FoodCard';
 
-export default function FoodList({ entries, onToggleFavorite }) {
+export default function FoodList({ entries, onToggleFavorite, onDeleteEntry }) {
     if (entries.length === 0) {
         return (
             <Row>
@@ -19,6 +19,7 @@ export default function FoodList({ entries, onToggleFavorite }) {
                     <FoodCard
                         entry={entry}
                         onToggleFavorite={onToggleFavorite}
+                        onDeleteEntry={onDeleteEntry}
                     />
                 </Col>
             ))}

@@ -1,11 +1,12 @@
 import { Button, Collapse } from 'react-bootstrap';
 import { useState } from 'react';
+import { IoLink } from 'react-icons/io5';
 
-export default function RecipeDetails({ recipe, instructions }) {
+export default function RecipeDetails({ recipe, instructions, recipeUrl }) {
     const [showRecipe, setShowRecipe] = useState(false);
 
     // Only show if there's at least one piece of recipe information
-    if (!recipe && !instructions) {
+    if (!recipe && !instructions && !recipeUrl) {
         return null;
     }
 
@@ -32,6 +33,20 @@ export default function RecipeDetails({ recipe, instructions }) {
                         <div className="mb-2">
                             <h3 className="h6">Instructions:</h3>
                             <p className="mb-1">{instructions}</p>
+                        </div>
+                    )}
+                    {recipeUrl && (
+                        <div className="mt-2">
+                            <Button
+                                variant="primary"
+                                size="sm"
+                                href={recipeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <IoLink style={{ marginRight: '6px' }} />
+                                View Recipe Source
+                            </Button>
                         </div>
                     )}
                 </div>
