@@ -14,7 +14,7 @@ export default function FoodCard({ entry, onToggleFavorite }) {
     ];
 
     // Use entry ID to consistently pick a gradient
-    const gradientIndex = entry.id.charCodeAt(0) % cardGradients.length;
+    const gradientIndex = String(entry.id).charCodeAt(0) % cardGradients.length;
     const cardStyle = {
         background: cardGradients[gradientIndex],
         border: 'none',
