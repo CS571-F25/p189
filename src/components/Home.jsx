@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Container, Row, Col, Form, Button, ButtonGroup } from 'react-bootstrap';
-import FoodCard from './FoodCard';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import FoodForm from './FoodForm';
 import Navigation from './Navigation';
+import SearchBar from './SearchBar';
+import SortButtons from './SortButtons';
+import FoodList from './FoodList';
 
 export default function Home({ entries, onAddEntry, onToggleFavorite }) {
     const [searchTerm, setSearchTerm] = useState('');
@@ -46,6 +48,7 @@ export default function Home({ entries, onAddEntry, onToggleFavorite }) {
                     variant="success"
                     className="mb-4"
                     onClick={() => setShowForm(!showForm)}
+                    aria-expanded={showForm}
                 >
                     {showForm ? 'Hide Form' : '+ Add New Entry'}
                 </Button>
@@ -59,59 +62,23 @@ export default function Home({ entries, onAddEntry, onToggleFavorite }) {
 
                 <Row className="mb-4">
                     <Col md={6}>
-                        <Form.Group>
-                            <Form.Label>Search by Name</Form.Label>
-                            <Form.Control
-                                type="text"
-                                placeholder="Search dishes..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                        </Form.Group>
+                        <SearchBar
+                            searchTerm={searchTerm}
+                            onSearchChange={setSearchTerm}
+                        />
                     </Col>
                     <Col md={6}>
-                        <Form.Group>
-                            <Form.Label>Sort By</Form.Label>
-                            <ButtonGroup className="d-block">
-                                <Button
-                                    variant={sortBy === 'date' ? 'primary' : 'outline-primary'}
-                                    onClick={() => setSortBy('date')}
-                                >
-                                    Date
-                                </Button>
-                                <Button
-                                    variant={sortBy === 'rating' ? 'primary' : 'outline-primary'}
-                                    onClick={() => setSortBy('rating')}
-                                >
-                                    Rating
-                                </Button>
-                                <Button
-                                    variant={sortBy === 'favorites' ? 'primary' : 'outline-primary'}
-                                    onClick={() => setSortBy('favorites')}
-                                >
-                                    Favorites First
-                                </Button>
-                            </ButtonGroup>
-                        </Form.Group>
+                        <SortButtons
+                            sortBy={sortBy}
+                            onSortChange={setSortBy}
+                        />
                     </Col>
                 </Row>
 
-                <Row>
-                    {sortedEntries.length === 0 ? (
-                        <Col>
-                            <p className="text-muted">No entries found. Add your first dish!</p>
-                        </Col>
-                    ) : (
-                        sortedEntries.map(entry => (
-                            <Col key={entry.id} md={6} lg={4}>
-                                <FoodCard
-                                    entry={entry}
-                                    onToggleFavorite={onToggleFavorite}
-                                />
-                            </Col>
-                        ))
-                    )}
-                </Row>
+                <FoodList
+                    entries={sortedEntries}
+                    onToggleFavorite={onToggleFavorite}
+                />
             </Container>
         </>
     );

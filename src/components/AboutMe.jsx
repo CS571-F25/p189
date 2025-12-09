@@ -10,14 +10,14 @@ export default function AboutMe() {
 
                 <Card className="shadow">
                     <Card.Body>
-                        <Card.Title>Welcome to Rate the Plate! 🍽️</Card.Title>
+                        <Card.Title as="h2">Welcome to Rate the Plate! 🍽️</Card.Title>
                         <Card.Text>
                             This is your personal food journal where you can document and rate all the amazing
                             dishes you've eaten or made. Whether it's a homemade creation or a restaurant discovery,
                             keep track of your culinary adventures!
                         </Card.Text>
 
-                        <Card.Title className="mt-4">Features</Card.Title>
+                        <h2 className="h4 mt-4">Features</h2>
                         <ul>
                             <li>📝 Create entries for homemade dishes with recipes and instructions</li>
                             <li>🏪 Track restaurant meals and who made them</li>

@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Form, Button, Card, Row, Col, ButtonGroup } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
+import RatingInput from './RatingInput';
+import ImageSelector from './ImageSelector';
 
 export default function FoodForm({ onAddEntry }) {
     const [formData, setFormData] = useState({
@@ -20,14 +22,32 @@ export default function FoodForm({ onAddEntry }) {
         emoji: '🍕'
     });
 
-    const foodEmojis = ['🍕', '🍔', '🍟', '🌮', '🍝', '🍜', '🍱', '🍛', '🍲', '🥗', '🍰', '🍪', '🧁', '🍩', '🥘', '🍳'];
-
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: type === 'checkbox' ? checked : value
         }));
+    };
+
+    const handleRatingChange = (ratingType, rating) => {
+        setFormData(prev => ({
+            ...prev,
+            ratingType,
+            rating
+        }));
+    };
+
+    const handleImageTypeChange = (imageType) => {
+        setFormData(prev => ({ ...prev, imageType }));
+    };
+
+    const handleImageUrlChange = (imageUrl) => {
+        setFormData(prev => ({ ...prev, imageUrl }));
+    };
+
+    const handleEmojiChange = (emoji) => {
+        setFormData(prev => ({ ...prev, emoji }));
     };
 
     const handleSubmit = (e) => {
@@ -65,11 +85,12 @@ export default function FoodForm({ onAddEntry }) {
     return (
         <Card className="mb-4 shadow">
             <Card.Body>
-                <Card.Title>Add New Food Entry</Card.Title>
+                <Card.Title as="h2">Add New Food Entry</Card.Title>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
-                        <Form.Label>Dish Name *</Form.Label>
+                        <Form.Label htmlFor="dish-name">Dish Name *</Form.Label>
                         <Form.Control
+                            id="dish-name"
                             type="text"
                             name="name"
                             value={formData.name}
@@ -81,11 +102,12 @@ export default function FoodForm({ onAddEntry }) {
 
                     <Form.Group className="mb-3">
                         <Form.Label>Type</Form.Label>
-                        <div>
+                        <div role="group" aria-label="Dish type selection">
                             <Form.Check
                                 inline
                                 type="radio"
                                 label="Homemade"
+                                id="type-homemade"
                                 name="isHomemade"
                                 checked={formData.isHomemade}
                                 onChange={() => setFormData(prev => ({ ...prev, isHomemade: true }))}
@@ -94,6 +116,7 @@ export default function FoodForm({ onAddEntry }) {
                                 inline
                                 type="radio"
                                 label="Restaurant/Other"
+                                id="type-restaurant"
                                 name="isHomemade"
                                 checked={!formData.isHomemade}
                                 onChange={() => setFormData(prev => ({ ...prev, isHomemade: false }))}
@@ -104,8 +127,9 @@ export default function FoodForm({ onAddEntry }) {
                     {formData.isHomemade ? (
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label>Recipe</Form.Label>
+                                <Form.Label htmlFor="recipe">Recipe</Form.Label>
                                 <Form.Control
+                                    id="recipe"
                                     as="textarea"
                                     rows={3}
                                     name="recipe"
@@ -116,8 +140,9 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Instructions</Form.Label>
+                                <Form.Label htmlFor="instructions">Instructions</Form.Label>
                                 <Form.Control
+                                    id="instructions"
                                     as="textarea"
                                     rows={3}
                                     name="instructions"
@@ -128,8 +153,9 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Recipe URL/Video Link</Form.Label>
+                                <Form.Label htmlFor="recipe-url">Recipe URL/Video Link</Form.Label>
                                 <Form.Control
+                                    id="recipe-url"
                                     type="url"
                                     name="recipeUrl"
                                     value={formData.recipeUrl}
@@ -139,8 +165,9 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Recipe Image URL</Form.Label>
+                                <Form.Label htmlFor="recipe-image">Recipe Image URL</Form.Label>
                                 <Form.Control
+                                    id="recipe-image"
                                     type="url"
                                     name="recipeImage"
                                     value={formData.recipeImage}
@@ -152,8 +179,9 @@ export default function FoodForm({ onAddEntry }) {
                     ) : (
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label>Location</Form.Label>
+                                <Form.Label htmlFor="location">Location</Form.Label>
                                 <Form.Control
+                                    id="location"
                                     type="text"
                                     name="location"
                                     value={formData.location}
@@ -163,8 +191,9 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Made By</Form.Label>
+                                <Form.Label htmlFor="made-by">Made By</Form.Label>
                                 <Form.Control
+                                    id="made-by"
                                     type="text"
                                     name="madeBy"
                                     value={formData.madeBy}
@@ -174,8 +203,9 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label>Restaurant/Social Media Link</Form.Label>
+                                <Form.Label htmlFor="external-link">Restaurant/Social Media Link</Form.Label>
                                 <Form.Control
+                                    id="external-link"
                                     type="url"
                                     name="externalLink"
                                     value={formData.externalLink}
@@ -187,8 +217,9 @@ export default function FoodForm({ onAddEntry }) {
                     )}
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Review</Form.Label>
+                        <Form.Label htmlFor="review">Review</Form.Label>
                         <Form.Control
+                            id="review"
                             as="textarea"
                             rows={2}
                             name="review"
@@ -198,134 +229,20 @@ export default function FoodForm({ onAddEntry }) {
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Rating Type</Form.Label>
-                        <div>
-                            <Form.Check
-                                inline
-                                type="radio"
-                                label="Stars (out of 5)"
-                                checked={formData.ratingType === 'stars'}
-                                onChange={() => setFormData(prev => ({ ...prev, ratingType: 'stars', rating: 5 }))}
-                            />
-                            <Form.Check
-                                inline
-                                type="radio"
-                                label="Numeric (out of 10)"
-                                checked={formData.ratingType === 'numeric'}
-                                onChange={() => setFormData(prev => ({ ...prev, ratingType: 'numeric', rating: 10 }))}
-                            />
-                            <Form.Check
-                                inline
-                                type="radio"
-                                label="Emoji"
-                                checked={formData.ratingType === 'emoji'}
-                                onChange={() => setFormData(prev => ({ ...prev, ratingType: 'emoji', rating: 'smile' }))}
-                            />
-                        </div>
-                    </Form.Group>
+                    <RatingInput
+                        ratingType={formData.ratingType}
+                        rating={formData.rating}
+                        onRatingChange={handleRatingChange}
+                    />
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Rating</Form.Label>
-                        {formData.ratingType === 'stars' && (
-                            <Form.Range
-                                name="rating"
-                                min="1"
-                                max="5"
-                                value={formData.rating}
-                                onChange={handleChange}
-                            />
-                        )}
-                        {formData.ratingType === 'numeric' && (
-                            <Form.Range
-                                name="rating"
-                                min="1"
-                                max="10"
-                                value={formData.rating}
-                                onChange={handleChange}
-                            />
-                        )}
-                        {formData.ratingType === 'emoji' && (
-                            <div>
-                                <Form.Check
-                                    inline
-                                    type="radio"
-                                    label="😢 Sad"
-                                    checked={formData.rating === 'sad'}
-                                    onChange={() => setFormData(prev => ({ ...prev, rating: 'sad' }))}
-                                />
-                                <Form.Check
-                                    inline
-                                    type="radio"
-                                    label="😐 Bored"
-                                    checked={formData.rating === 'bored'}
-                                    onChange={() => setFormData(prev => ({ ...prev, rating: 'bored' }))}
-                                />
-                                <Form.Check
-                                    inline
-                                    type="radio"
-                                    label="😊 Smile"
-                                    checked={formData.rating === 'smile'}
-                                    onChange={() => setFormData(prev => ({ ...prev, rating: 'smile' }))}
-                                />
-                            </div>
-                        )}
-                        <Form.Text>
-                            {formData.ratingType === 'stars' && `${formData.rating}/5 stars`}
-                            {formData.ratingType === 'numeric' && `${formData.rating}/10`}
-                        </Form.Text>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3">
-                        <Form.Label>Image Type</Form.Label>
-                        <div>
-                            <Form.Check
-                                inline
-                                type="radio"
-                                label="Emoji"
-                                checked={formData.imageType === 'emoji'}
-                                onChange={() => setFormData(prev => ({ ...prev, imageType: 'emoji' }))}
-                            />
-                            <Form.Check
-                                inline
-                                type="radio"
-                                label="Upload URL"
-                                checked={formData.imageType === 'upload'}
-                                onChange={() => setFormData(prev => ({ ...prev, imageType: 'upload' }))}
-                            />
-                        </div>
-                    </Form.Group>
-
-                    {formData.imageType === 'emoji' ? (
-                        <Form.Group className="mb-3">
-                            <Form.Label>Select Emoji</Form.Label>
-                            <div>
-                                {foodEmojis.map(emoji => (
-                                    <Button
-                                        key={emoji}
-                                        variant={formData.emoji === emoji ? 'primary' : 'outline-secondary'}
-                                        className="m-1"
-                                        style={{ fontSize: '1.5rem' }}
-                                        onClick={() => setFormData(prev => ({ ...prev, emoji }))}
-                                        type="button"
-                                    >
-                                        {emoji}
-                                    </Button>
-                                ))}
-                            </div>
-                        </Form.Group>
-                    ) : (
-                        <Form.Group className="mb-3">
-                            <Form.Label>Image URL</Form.Label>
-                            <Form.Control
-                                type="url"
-                                name="imageUrl"
-                                value={formData.imageUrl}
-                                onChange={handleChange}
-                                placeholder="https://..."
-                            />
-                        </Form.Group>
-                    )}
+                    <ImageSelector
+                        imageType={formData.imageType}
+                        imageUrl={formData.imageUrl}
+                        emoji={formData.emoji}
+                        onImageTypeChange={handleImageTypeChange}
+                        onImageUrlChange={handleImageUrlChange}
+                        onEmojiChange={handleEmojiChange}
+                    />
 
                     <Button variant="primary" type="submit" className="w-100">
                         Add Entry
