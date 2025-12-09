@@ -48,7 +48,11 @@ export default function FoodCard({ entry, onToggleFavorite, onDeleteEntry }) {
                             size="sm"
                             onClick={() => onDeleteEntry(entry.id)}
                             aria-label="Delete entry"
-                            style={{ fontSize: '1.1rem' }}
+                            style={{
+                                fontSize: '1.1rem',
+                                background: 'linear-gradient(135deg, #c084fc 0%, #e879f9 100%)',
+                                border: 'none'
+                            }}
                         >
                             <IoTrash />
                         </Button>
