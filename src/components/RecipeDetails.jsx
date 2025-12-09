@@ -1,11 +1,11 @@
 import { Button, Collapse } from 'react-bootstrap';
 import { useState } from 'react';
 
-export default function RecipeDetails({ recipe, instructions, recipeUrl, recipeImage }) {
+export default function RecipeDetails({ recipe, instructions, recipeImage }) {
     const [showRecipe, setShowRecipe] = useState(false);
 
     // Only show if there's at least one piece of recipe information
-    if (!recipe && !instructions && !recipeUrl && !recipeImage) {
+    if (!recipe && !instructions && !recipeImage) {
         return null;
     }
 
@@ -32,14 +32,6 @@ export default function RecipeDetails({ recipe, instructions, recipeUrl, recipeI
                         <div className="mb-2">
                             <h3 className="h6">Instructions:</h3>
                             <p className="mb-1">{instructions}</p>
-                        </div>
-                    )}
-                    {recipeUrl && (
-                        <div className="mb-2">
-                            <h3 className="h6">Recipe Source:</h3>
-                            <a href={recipeUrl} target="_blank" rel="noopener noreferrer">
-                                {recipeUrl}
-                            </a>
                         </div>
                     )}
                     {recipeImage && (

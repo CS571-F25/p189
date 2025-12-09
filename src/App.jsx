@@ -12,7 +12,6 @@ const exampleEntry = {
     isHomemade: true,
     recipe: "2 cups flour, 1 cup butter, 1 cup sugar, 2 eggs, 2 cups chocolate chips, 1 tsp vanilla, 1 tsp baking soda, pinch of salt",
     instructions: "1. Preheat oven to 350°F. 2. Mix butter and sugar until fluffy. 3. Add eggs and vanilla. 4. Mix in dry ingredients. 5. Fold in chocolate chips. 6. Bake for 10-12 minutes.",
-    recipeUrl: "https://www.example.com/chocolate-chip-cookies",
     recipeImage: "",
     location: "",
     madeBy: "",
