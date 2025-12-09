@@ -42,15 +42,19 @@ export default function Home({ entries, onAddEntry, onToggleFavorite }) {
         <>
             <Navigation />
             <Container>
-                <h1 className="mb-4">🍽️ Rate the Plate</h1>
+                <h1 className="page-title mb-4">🍽️ Rate the Plate</h1>
+                <p className="text-muted mb-4" style={{ fontSize: '1.1rem' }}>
+                    ✨ Your personal food journal for culinary adventures! ✨
+                </p>
 
                 <Button
                     variant="success"
                     className="mb-4"
                     onClick={() => setShowForm(!showForm)}
                     aria-expanded={showForm}
+                    style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}
                 >
-                    {showForm ? 'Hide Form' : '+ Add New Entry'}
+                    {showForm ? '❌ Hide Form' : '✨ Add New Entry'}
                 </Button>
 
                 {showForm && (

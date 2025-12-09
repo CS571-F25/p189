@@ -83,12 +83,25 @@ export default function FoodForm({ onAddEntry }) {
     };
 
     return (
-        <Card className="mb-4 shadow">
-            <Card.Body>
-                <Card.Title as="h2">Add New Food Entry</Card.Title>
+        <Card
+            className="mb-4"
+            style={{
+                background: 'linear-gradient(135deg, #FFD6E8 0%, #E6D5F5 50%, #D5E8F5 100%)',
+                border: 'none'
+            }}
+        >
+            <Card.Body style={{ background: 'white', margin: '10px', borderRadius: '15px' }}>
+                <Card.Title as="h2" style={{
+                    color: '#C44569',
+                    fontWeight: '700',
+                    fontSize: '1.8rem',
+                    marginBottom: '1.5rem'
+                }}>
+                    ✨ Add New Food Entry
+                </Card.Title>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
-                        <Form.Label htmlFor="dish-name">Dish Name *</Form.Label>
+                        <Form.Label htmlFor="dish-name">🍽️ Dish Name *</Form.Label>
                         <Form.Control
                             id="dish-name"
                             type="text"
@@ -101,12 +114,12 @@ export default function FoodForm({ onAddEntry }) {
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>Type</Form.Label>
+                        <Form.Label>🏷️ Type</Form.Label>
                         <div role="group" aria-label="Dish type selection">
                             <Form.Check
                                 inline
                                 type="radio"
-                                label="Homemade"
+                                label="🏠 Homemade"
                                 id="type-homemade"
                                 name="isHomemade"
                                 checked={formData.isHomemade}
@@ -115,7 +128,7 @@ export default function FoodForm({ onAddEntry }) {
                             <Form.Check
                                 inline
                                 type="radio"
-                                label="Restaurant/Other"
+                                label="🏪 Restaurant/Other"
                                 id="type-restaurant"
                                 name="isHomemade"
                                 checked={!formData.isHomemade}
@@ -127,7 +140,7 @@ export default function FoodForm({ onAddEntry }) {
                     {formData.isHomemade ? (
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe">Recipe</Form.Label>
+                                <Form.Label htmlFor="recipe">📝 Recipe</Form.Label>
                                 <Form.Control
                                     id="recipe"
                                     as="textarea"
@@ -140,7 +153,7 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="instructions">Instructions</Form.Label>
+                                <Form.Label htmlFor="instructions">👨‍🍳 Instructions</Form.Label>
                                 <Form.Control
                                     id="instructions"
                                     as="textarea"
@@ -153,7 +166,7 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe-url">Recipe URL/Video Link</Form.Label>
+                                <Form.Label htmlFor="recipe-url">🔗 Recipe URL/Video Link</Form.Label>
                                 <Form.Control
                                     id="recipe-url"
                                     type="url"
@@ -165,7 +178,7 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe-image">Recipe Image URL</Form.Label>
+                                <Form.Label htmlFor="recipe-image">📸 Recipe Image URL</Form.Label>
                                 <Form.Control
                                     id="recipe-image"
                                     type="url"
@@ -179,7 +192,7 @@ export default function FoodForm({ onAddEntry }) {
                     ) : (
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="location">Location</Form.Label>
+                                <Form.Label htmlFor="location">📍 Location</Form.Label>
                                 <Form.Control
                                     id="location"
                                     type="text"
@@ -191,7 +204,7 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="made-by">Made By</Form.Label>
+                                <Form.Label htmlFor="made-by">👨‍🍳 Made By</Form.Label>
                                 <Form.Control
                                     id="made-by"
                                     type="text"
@@ -203,7 +216,7 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="external-link">Restaurant/Social Media Link</Form.Label>
+                                <Form.Label htmlFor="external-link">🔗 Restaurant/Social Media Link</Form.Label>
                                 <Form.Control
                                     id="external-link"
                                     type="url"
@@ -217,7 +230,7 @@ export default function FoodForm({ onAddEntry }) {
                     )}
 
                     <Form.Group className="mb-3">
-                        <Form.Label htmlFor="review">Review</Form.Label>
+                        <Form.Label htmlFor="review">💭 Review</Form.Label>
                         <Form.Control
                             id="review"
                             as="textarea"
@@ -244,8 +257,18 @@ export default function FoodForm({ onAddEntry }) {
                         onEmojiChange={handleEmojiChange}
                     />
 
-                    <Button variant="primary" type="submit" className="w-100">
-                        Add Entry
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        className="w-100"
+                        style={{
+                            fontSize: '1.1rem',
+                            padding: '0.75rem',
+                            fontWeight: '700',
+                            marginTop: '1rem'
+                        }}
+                    >
+                        ✨ Add Entry
                     </Button>
                 </Form>
             </Card.Body>
