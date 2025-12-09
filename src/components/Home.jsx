@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { IoRestaurant, IoSparkles, IoClose, IoAdd } from 'react-icons/io5';
 import FoodForm from './FoodForm';
 import Navigation from './Navigation';
 import SearchBar from './SearchBar';
@@ -42,9 +43,14 @@ export default function Home({ entries, onAddEntry, onToggleFavorite }) {
         <>
             <Navigation />
             <Container>
-                <h1 className="page-title mb-4">🍽️ Rate the Plate</h1>
+                <h1 className="page-title mb-4">
+                    <IoRestaurant style={{ marginRight: '12px' }} />
+                    Rate the Plate
+                </h1>
                 <p className="text-muted mb-4" style={{ fontSize: '1.1rem' }}>
-                    ✨ Your personal food journal for culinary adventures! ✨
+                    <IoSparkles style={{ marginRight: '8px' }} />
+                    Your personal food journal for culinary adventures!
+                    <IoSparkles style={{ marginLeft: '8px' }} />
                 </p>
 
                 <Button
@@ -54,7 +60,17 @@ export default function Home({ entries, onAddEntry, onToggleFavorite }) {
                     aria-expanded={showForm}
                     style={{ fontSize: '1.1rem', padding: '0.75rem 2rem' }}
                 >
-                    {showForm ? '❌ Hide Form' : '✨ Add New Entry'}
+                    {showForm ? (
+                        <>
+                            <IoClose style={{ marginRight: '8px', fontSize: '1.3rem' }} />
+                            Hide Form
+                        </>
+                    ) : (
+                        <>
+                            <IoAdd style={{ marginRight: '8px', fontSize: '1.3rem' }} />
+                            Add New Entry
+                        </>
+                    )}
                 </Button>
 
                 {showForm && (

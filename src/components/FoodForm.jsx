@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import { IoSparkles, IoRestaurant, IoPricetag, IoHome, IoStorefront, IoDocument, IoCreate, IoLink, IoImage, IoChatbubble, IoAdd } from 'react-icons/io5';
 import RatingInput from './RatingInput';
 import ImageSelector from './ImageSelector';
 
@@ -97,11 +98,15 @@ export default function FoodForm({ onAddEntry }) {
                     fontSize: '1.8rem',
                     marginBottom: '1.5rem'
                 }}>
-                    ✨ Add New Food Entry
+                    <IoSparkles style={{ marginRight: '10px' }} />
+                    Add New Food Entry
                 </Card.Title>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
-                        <Form.Label htmlFor="dish-name">🍽️ Dish Name *</Form.Label>
+                        <Form.Label htmlFor="dish-name">
+                            <IoRestaurant style={{ marginRight: '6px' }} />
+                            Dish Name *
+                        </Form.Label>
                         <Form.Control
                             id="dish-name"
                             type="text"
@@ -114,12 +119,15 @@ export default function FoodForm({ onAddEntry }) {
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                        <Form.Label>🏷️ Type</Form.Label>
+                        <Form.Label>
+                            <IoPricetag style={{ marginRight: '6px' }} />
+                            Type
+                        </Form.Label>
                         <div role="group" aria-label="Dish type selection">
                             <Form.Check
                                 inline
                                 type="radio"
-                                label="🏠 Homemade"
+                                label={<><IoHome style={{ marginRight: '6px' }} />Homemade</>}
                                 id="type-homemade"
                                 name="isHomemade"
                                 checked={formData.isHomemade}
@@ -128,7 +136,7 @@ export default function FoodForm({ onAddEntry }) {
                             <Form.Check
                                 inline
                                 type="radio"
-                                label="🏪 Restaurant/Other"
+                                label={<><IoStorefront style={{ marginRight: '6px' }} />Restaurant/Other</>}
                                 id="type-restaurant"
                                 name="isHomemade"
                                 checked={!formData.isHomemade}
@@ -140,7 +148,10 @@ export default function FoodForm({ onAddEntry }) {
                     {formData.isHomemade ? (
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe">📝 Recipe</Form.Label>
+                                <Form.Label htmlFor="recipe">
+                                    <IoDocument style={{ marginRight: '6px' }} />
+                                    Recipe
+                                </Form.Label>
                                 <Form.Control
                                     id="recipe"
                                     as="textarea"
@@ -153,7 +164,10 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="instructions">👨‍🍳 Instructions</Form.Label>
+                                <Form.Label htmlFor="instructions">
+                                    <IoCreate style={{ marginRight: '6px' }} />
+                                    Instructions
+                                </Form.Label>
                                 <Form.Control
                                     id="instructions"
                                     as="textarea"
@@ -166,7 +180,10 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe-url">🔗 Recipe URL/Video Link</Form.Label>
+                                <Form.Label htmlFor="recipe-url">
+                                    <IoLink style={{ marginRight: '6px' }} />
+                                    Recipe URL/Video Link
+                                </Form.Label>
                                 <Form.Control
                                     id="recipe-url"
                                     type="url"
@@ -178,7 +195,10 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe-image">📸 Recipe Image URL</Form.Label>
+                                <Form.Label htmlFor="recipe-image">
+                                    <IoImage style={{ marginRight: '6px' }} />
+                                    Recipe Image URL
+                                </Form.Label>
                                 <Form.Control
                                     id="recipe-image"
                                     type="url"
@@ -192,7 +212,10 @@ export default function FoodForm({ onAddEntry }) {
                     ) : (
                         <>
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="location">📍 Location</Form.Label>
+                                <Form.Label htmlFor="location">
+                                    <IoStorefront style={{ marginRight: '6px' }} />
+                                    Location
+                                </Form.Label>
                                 <Form.Control
                                     id="location"
                                     type="text"
@@ -204,7 +227,10 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="made-by">👨‍🍳 Made By</Form.Label>
+                                <Form.Label htmlFor="made-by">
+                                    <IoRestaurant style={{ marginRight: '6px' }} />
+                                    Made By
+                                </Form.Label>
                                 <Form.Control
                                     id="made-by"
                                     type="text"
@@ -216,7 +242,10 @@ export default function FoodForm({ onAddEntry }) {
                             </Form.Group>
 
                             <Form.Group className="mb-3">
-                                <Form.Label htmlFor="external-link">🔗 Restaurant/Social Media Link</Form.Label>
+                                <Form.Label htmlFor="external-link">
+                                    <IoLink style={{ marginRight: '6px' }} />
+                                    Restaurant/Social Media Link
+                                </Form.Label>
                                 <Form.Control
                                     id="external-link"
                                     type="url"
@@ -230,7 +259,10 @@ export default function FoodForm({ onAddEntry }) {
                     )}
 
                     <Form.Group className="mb-3">
-                        <Form.Label htmlFor="review">💭 Review</Form.Label>
+                        <Form.Label htmlFor="review">
+                            <IoChatbubble style={{ marginRight: '6px' }} />
+                            Review
+                        </Form.Label>
                         <Form.Control
                             id="review"
                             as="textarea"
@@ -268,7 +300,8 @@ export default function FoodForm({ onAddEntry }) {
                             marginTop: '1rem'
                         }}
                     >
-                        ✨ Add Entry
+                        <IoAdd style={{ marginRight: '8px', fontSize: '1.3rem' }} />
+                        Add Entry
                     </Button>
                 </Form>
             </Card.Body>

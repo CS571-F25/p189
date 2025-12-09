@@ -1,4 +1,5 @@
 import { Card, Button, Badge } from 'react-bootstrap';
+import { IoStar, IoStarOutline, IoChatbubble, IoHome, IoStorefront, IoLocation, IoRestaurant, IoLink, IoCalendar } from 'react-icons/io5';
 import RatingDisplay from './RatingDisplay';
 import ImageDisplay from './ImageDisplay';
 import RecipeDetails from './RecipeDetails';
@@ -37,9 +38,9 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                         size="sm"
                         onClick={() => onToggleFavorite(entry.id)}
                         aria-label={entry.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                        style={{ fontSize: '1.2rem' }}
+                        style={{ fontSize: '1.3rem' }}
                     >
-                        {entry.isFavorite ? '⭐' : '☆'}
+                        {entry.isFavorite ? <IoStar /> : <IoStarOutline />}
                     </Button>
                 </div>
 
@@ -55,7 +56,10 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                         borderRadius: '10px',
                         borderLeft: '4px solid #FFB5C5'
                     }}>
-                        <strong>💭 Review:</strong> {entry.review}
+                        <strong>
+                            <IoChatbubble style={{ marginRight: '6px' }} />
+                            Review:
+                        </strong> {entry.review}
                     </Card.Text>
                 )}
 
@@ -69,7 +73,8 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                                 fontSize: '0.9rem'
                             }}
                         >
-                            🏠 Homemade
+                            <IoHome style={{ marginRight: '6px' }} />
+                            Homemade
                         </Badge>
                         <RecipeDetails
                             recipe={entry.recipe}
@@ -88,16 +93,23 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                                 fontSize: '0.9rem'
                             }}
                         >
-                            🏪 Restaurant/Other
+                            <IoStorefront style={{ marginRight: '6px' }} />
+                            Restaurant/Other
                         </Badge>
                         {entry.location && (
                             <Card.Text className="mb-1">
-                                <strong>📍 Location:</strong> {entry.location}
+                                <strong>
+                                    <IoLocation style={{ marginRight: '6px' }} />
+                                    Location:
+                                </strong> {entry.location}
                             </Card.Text>
                         )}
                         {entry.madeBy && (
                             <Card.Text className="mb-1">
-                                <strong>👨‍🍳 Made by:</strong> {entry.madeBy}
+                                <strong>
+                                    <IoRestaurant style={{ marginRight: '6px' }} />
+                                    Made by:
+                                </strong> {entry.madeBy}
                             </Card.Text>
                         )}
                         {entry.externalLink && (
@@ -109,7 +121,8 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    🔗 Visit Link
+                                    <IoLink style={{ marginRight: '6px' }} />
+                                    Visit Link
                                 </Button>
                             </div>
                         )}
@@ -120,7 +133,8 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                     borderTop: '1px solid #eee',
                     paddingTop: '0.5rem'
                 }}>
-                    📅 <time dateTime={entry.dateCreated}>
+                    <IoCalendar style={{ marginRight: '6px' }} />
+                    <time dateTime={entry.dateCreated}>
                         {new Date(entry.dateCreated).toLocaleDateString()}
                     </time>
                 </div>
