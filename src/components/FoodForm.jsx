@@ -10,7 +10,6 @@ export default function FoodForm({ onAddEntry }) {
         isHomemade: true,
         recipe: '',
         instructions: '',
-        recipeImage: '',
         location: '',
         madeBy: '',
         externalLink: '',
@@ -68,7 +67,6 @@ export default function FoodForm({ onAddEntry }) {
             isHomemade: true,
             recipe: '',
             instructions: '',
-            recipeImage: '',
             location: '',
             madeBy: '',
             externalLink: '',
@@ -174,21 +172,6 @@ export default function FoodForm({ onAddEntry }) {
                                     value={formData.instructions}
                                     onChange={handleChange}
                                     placeholder="Enter cooking instructions"
-                                />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label htmlFor="recipe-image">
-                                    <IoImage style={{ marginRight: '6px' }} />
-                                    Recipe Image URL
-                                </Form.Label>
-                                <Form.Control
-                                    id="recipe-image"
-                                    type="url"
-                                    name="recipeImage"
-                                    value={formData.recipeImage}
-                                    onChange={handleChange}
-                                    placeholder="https://..."
                                 />
                             </Form.Group>
                         </>

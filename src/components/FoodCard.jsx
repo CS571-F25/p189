@@ -79,7 +79,6 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                         <RecipeDetails
                             recipe={entry.recipe}
                             instructions={entry.instructions}
-                            recipeImage={entry.recipeImage}
                         />
                     </>
                 ) : (

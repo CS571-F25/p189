@@ -65,29 +65,32 @@ export default function RatingInput({ ratingType, rating, onRatingChange }) {
                         <Form.Check
                             inline
                             type="radio"
-                            label="😢 Sad"
+                            label="😢"
                             id="emoji-sad"
                             name="emojiRating"
                             checked={rating === 'sad'}
                             onChange={() => onRatingChange(ratingType, 'sad')}
+                            style={{ fontSize: '2rem' }}
                         />
                         <Form.Check
                             inline
                             type="radio"
-                            label="😐 Bored"
+                            label="😐"
                             id="emoji-bored"
                             name="emojiRating"
                             checked={rating === 'bored'}
                             onChange={() => onRatingChange(ratingType, 'bored')}
+                            style={{ fontSize: '2rem' }}
                         />
                         <Form.Check
                             inline
                             type="radio"
-                            label="😊 Smile"
+                            label="😊"
                             id="emoji-smile"
                             name="emojiRating"
                             checked={rating === 'smile'}
                             onChange={() => onRatingChange(ratingType, 'smile')}
+                            style={{ fontSize: '2rem' }}
                         />
                     </div>
                 )}
