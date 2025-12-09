@@ -54,7 +54,7 @@ export default function AboutMe() {
                                     padding: '1rem',
                                     borderRadius: '15px',
                                     marginBottom: '1rem',
-                                    borderLeft: '4px solid #56ab2f'
+                                    borderLeft: '4px solid #a78bfa'
                                 }}>
                                     <strong>
                                         <IoCreate style={{ marginRight: '8px' }} />
@@ -129,7 +129,7 @@ export default function AboutMe() {
                                     padding: '1rem',
                                     borderRadius: '15px',
                                     marginBottom: '1rem',
-                                    borderLeft: '4px solid #a8e063'
+                                    borderLeft: '4px solid #c084fc'
                                 }}>
                                     <strong>
                                         <IoSearch style={{ marginRight: '8px' }} />
@@ -141,7 +141,7 @@ export default function AboutMe() {
                         </Row>
 
                         <div style={{
-                            background: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)',
+                            background: 'linear-gradient(135deg, #a78bfa 0%, #c084fc 100%)',
                             color: 'white',
                             padding: '1.5rem',
                             borderRadius: '15px',

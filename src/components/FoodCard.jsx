@@ -69,7 +69,7 @@ export default function FoodCard({ entry, onToggleFavorite }) {
                             bg="success"
                             className="mb-2"
                             style={{
-                                background: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)',
+                                background: 'linear-gradient(135deg, #a78bfa 0%, #c084fc 100%)',
                                 fontSize: '0.9rem'
                             }}
                         >
